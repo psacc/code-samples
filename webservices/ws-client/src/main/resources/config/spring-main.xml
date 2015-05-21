@@ -31,5 +31,14 @@
                 <bean class="javax.xml.ws.soap.MTOMFeature"/>
             </util:list>
         </property>
+        <property name="handlerResolver">
+            <bean class="koinos.webservices.wsclient.handlers.ListHandlerResolver">
+                <property name="handlers">
+                    <util:list>
+                        <bean class="koinos.webservices.wsclient.handlers.SoapMessageLogger"/>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
     </bean>
 </beans>

@@ -18,6 +18,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TestStreaming {
+    public static final String URL = "http://docs.oracle.com/javase/7/docs/api/javax/xml/ws/WebServiceFeature.html";
+//    public static final String URL = "http://download.jetbrains.com/idea/ideaIC-14.1.3.exe";
+
     private final ApplicationContext context;
 
     public TestStreaming() {
@@ -31,7 +34,7 @@ public class TestStreaming {
     private void testDownload() throws Exception {
         DocumentRepository ws = getDocumentRepository();
 
-        Document document = ws.download("http://download.jetbrains.com/idea/ideaIC-14.1.3.exe");
+        Document document = ws.download(URL);
 
         printHeap("document stream received");
 
@@ -43,7 +46,7 @@ public class TestStreaming {
     private void testGetContent() throws Exception {
         DocumentRepository ws = getDocumentRepository();
 
-        DataHandler content = ws.getContent("http://download.jetbrains.com/idea/ideaIC-14.1.3.exe");
+        DataHandler content = ws.getContent(URL);
 
         printHeap("content stream received");
 
@@ -61,7 +64,7 @@ public class TestStreaming {
         document.setId("prova.upload");
 
 //        final DataHandler dataHandler = new DataSourceStreamingDataHandler(new FileDataSource(getTempDir() + "/largedoc.sample"));
-        final StreamingDataHandler dataHandler = new DataSourceStreamingDataHandler(new URLDataSource(new URL("http://download.jetbrains.com/idea/ideaIC-14.1.3.exe")));
+        final StreamingDataHandler dataHandler = new DataSourceStreamingDataHandler(new URLDataSource(new URL(URL)));
         document.setContent(dataHandler);
 
         printHeap("before upload");

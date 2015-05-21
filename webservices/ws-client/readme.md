@@ -25,3 +25,11 @@
     * impostare la cartella temporanea -Djava.io.tmpdir=&lt;cartella temporanea&gt;
     * i file scaricati dal server verranno scritti nella cartella temporanea
     * il file in upload viene letto da web
+    
+## Message Handlers
+E' possibile configurare degli handlers per l'input e l'output dei servizi:
+    
+- in spring-main.xml vedi il blocco `<property name="handlerResolver">`
+- è sufficiente implementare `SOAPHandler` ed aggiungere l'implementazione alla lista indicata sopra
+- vedi `koinos.webservices.wsclient.handlers.SoapMessageLogger` come esempio di un handler (logging dei messaggi)
+    * per vederla funzionare abilitare il logging: `-Dkoinos.wsclient.log.enabled=true`
