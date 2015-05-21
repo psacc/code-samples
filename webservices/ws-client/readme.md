@@ -24,4 +24,4 @@
     * per i test impostare la dimensione massima dell'heap molto bassa (es. -Xmx64m)
     * impostare la cartella temporanea -Djava.io.tmpdir=&lt;cartella temporanea&gt;
     * i file scaricati dal server verranno scritti nella cartella temporanea
-    * il file in upload è presente nel pacchetto (`resources/testdata/largedoc.sample`)
+    * il file in upload viene letto da web
