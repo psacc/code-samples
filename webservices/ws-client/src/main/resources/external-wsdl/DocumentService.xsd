@@ -1,0 +1,43 @@
+<xs:schema xmlns:tns="http://wsserver.webservices.koinos/" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://wsserver.webservices.koinos/">
+    <xs:import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="http://www.w3.org/2005/05/xmlmime"/>
+    <xs:element name="download" type="tns:download"/>
+    <xs:element name="downloadResponse" type="tns:downloadResponse"/>
+    <xs:element name="getContent" type="tns:getContent"/>
+    <xs:element name="getContentResponse" type="tns:getContentResponse"/>
+    <xs:element name="upload" type="tns:upload"/>
+    <xs:element name="uploadResponse" type="tns:uploadResponse"/>
+    <xs:complexType name="getContent">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="getContentResponse">
+        <xs:sequence>
+            <xs:element name="return" xmime:expectedContentTypes="application/octet-stream" type="xs:base64Binary" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="download">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="downloadResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:document" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="document">
+        <xs:sequence>
+            <xs:element name="content" xmime:expectedContentTypes="application/octet-stream" type="xs:base64Binary" minOccurs="0"/>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="upload">
+        <xs:sequence>
+            <xs:element name="document" type="tns:document" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="uploadResponse">
+        <xs:sequence/>
+    </xs:complexType>
+</xs:schema>

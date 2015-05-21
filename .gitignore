@@ -1,0 +1,4 @@
+.idea
+*.iml
+webservices/ws-client/target
+webservices/ws-server/target

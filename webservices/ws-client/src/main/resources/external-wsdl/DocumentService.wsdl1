@@ -1,0 +1,39 @@
+<definitions xmlns:tns="http://wsserver.webservices.koinos/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://wsserver.webservices.koinos/">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://wsserver.webservices.koinos/" schemaLocation="DocumentService.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="download">
+        <part name="parameters" element="tns:download"/>
+    </message>
+    <message name="downloadResponse">
+        <part name="parameters" element="tns:downloadResponse"/>
+    </message>
+    <message name="getContent">
+        <part name="parameters" element="tns:getContent"/>
+    </message>
+    <message name="getContentResponse">
+        <part name="parameters" element="tns:getContentResponse"/>
+    </message>
+    <message name="upload">
+        <part name="parameters" element="tns:upload"/>
+    </message>
+    <message name="uploadResponse">
+        <part name="parameters" element="tns:uploadResponse"/>
+    </message>
+    <portType name="DocumentRepository">
+        <operation name="download">
+            <input xmlns:ns1="http://www.w3.org/2007/05/addressing/metadata" ns1:Action="http://wsserver.webservices.koinos/DocumentRepository/downloadRequest" message="tns:download"/>
+            <output xmlns:ns2="http://www.w3.org/2007/05/addressing/metadata" ns2:Action="http://wsserver.webservices.koinos/DocumentRepository/downloadResponse" message="tns:downloadResponse"/>
+        </operation>
+        <operation name="getContent">
+            <input xmlns:ns3="http://www.w3.org/2007/05/addressing/metadata" ns3:Action="http://wsserver.webservices.koinos/DocumentRepository/getContentRequest" message="tns:getContent"/>
+            <output xmlns:ns4="http://www.w3.org/2007/05/addressing/metadata" ns4:Action="http://wsserver.webservices.koinos/DocumentRepository/getContentResponse" message="tns:getContentResponse"/>
+        </operation>
+        <operation name="upload">
+            <input xmlns:ns5="http://www.w3.org/2007/05/addressing/metadata" ns5:Action="http://wsserver.webservices.koinos/DocumentRepository/uploadRequest" message="tns:upload"/>
+            <output xmlns:ns6="http://www.w3.org/2007/05/addressing/metadata" ns6:Action="http://wsserver.webservices.koinos/DocumentRepository/uploadResponse" message="tns:uploadResponse"/>
+        </operation>
+    </portType>
+</definitions>

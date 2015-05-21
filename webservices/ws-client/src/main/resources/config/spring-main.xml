@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
+    
+	<context:annotation-config />
+	<context:component-scan base-package="koinos.webservices.wsclient" />
+
+    <bean id="DocumentService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean"
+          p:serviceInterface="koinos.webservices.wsclient.generated.DocumentRepository"
+          p:wsdlDocumentUrl="classpath:external-wsdl/DocumentService.wsdl"
+          p:namespaceUri="http://services.wsserver.webservices.koinos/"
+          p:serviceName="DocumentService"
+          p:portName="DocumentRepositoryServicePort">
+        <property name="customProperties">
+            <util:map>
+                <!-- define chunk size -->
+                <entry key="com.sun.xml.ws.transport.http.client.streaming.chunk.size" value="#{8096}"/>
+            </util:map>
+        </property>
+        <property name="webServiceFeatures">
+            <util:list>
+                <!-- enable MTOM -->
+                <bean class="javax.xml.ws.soap.MTOMFeature"/>
+            </util:list>
+        </property>
+    </bean>
+</beans>
