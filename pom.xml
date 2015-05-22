@@ -8,7 +8,6 @@
   <packaging>pom</packaging>
 
   <modules>
-      <module>webservices/ws-common</module>
       <module>webservices/ws-server</module>
       <module>webservices/ws-client</module>
   </modules>
