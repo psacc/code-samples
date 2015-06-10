@@ -10,5 +10,6 @@
   <modules>
       <module>webservices/ws-server</module>
       <module>webservices/ws-client</module>
+      <module>genericcontroller</module>
   </modules>
 </project>
