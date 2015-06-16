@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>koinos.lombok</groupId>
+        <artifactId>grokking-lombok-project</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>compile</artifactId>
+    <description>compiling sources with different options</description>
+
+    <properties>
+        <lombokVersion>1.16.4</lombokVersion>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombokVersion}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>koinos.lombok</groupId>
+                <artifactId>codegen-maven-plugin</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals><goal>codegen</goal></goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>no-lombok</id>
+            <properties>
+                <lombokMode>NONE</lombokMode>
+            </properties>
+        </profile>
+        <profile>
+            <id>lombok-getter-setter</id>
+            <properties>
+                <lombokMode>GETTER_SETTER</lombokMode>
+            </properties>
+        </profile>
+        <profile>
+            <id>lombok-data</id>
+            <properties>
+                <lombokMode>DATA</lombokMode>
+            </properties>
+        </profile>
+        <profile>
+            <id>fast</id>
+            <properties>
+                <lombokVersion>1.12.4</lombokVersion>
+            </properties>
+        </profile>
+    </profiles>
+</project>
