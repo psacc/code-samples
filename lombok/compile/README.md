@@ -1,5 +1,5 @@
 The project allows to measure time to compile large number of classes 
-written with o without using lombok. 
+written with o without lombok. 
     
 `mvn clean install` first generates some code using `codegen-maven-plugin`, then compiles it.
 By default, plugin generates 10 packages with 100 classes in each, 
