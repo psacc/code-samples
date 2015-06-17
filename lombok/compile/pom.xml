@@ -16,6 +16,7 @@
 
     <properties>
         <lombokVersion>1.16.4</lombokVersion>
+        <lombokMode>NONE</lombokMode>
     </properties>
 
     <dependencies>
